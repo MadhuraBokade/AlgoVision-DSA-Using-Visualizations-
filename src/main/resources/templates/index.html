@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AlgoVision – Interactive Data Structures & Algorithms</title>
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- AlgoVision Stylesheets (Pastel Academia Theme) -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Left Navigation Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <i class="fas fa-sparkles logo-icon"></i>
+        <span class="logo-text">AlgoVision</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="/" class="nav-item active">
+          <i class="fas fa-home"></i>
+          <span>Dashboard</span>
+        </a>
+        <a href="/topic/arrays" class="nav-item">
+          <i class="fas fa-layer-group"></i>
+          <span>Data Structures</span>
+        </a>
+        <a href="/topic/bubble-sort" class="nav-item">
+          <i class="fas fa-arrow-down-short-wide"></i>
+          <span>Sorting Algorithms</span>
+        </a>
+        <a href="/topic/linear-search" class="nav-item">
+          <i class="fas fa-magnifying-glass"></i>
+          <span>Searching Algorithms</span>
+        </a>
+        <a href="#progress-section" class="nav-item" onclick="scrollToSection('progress-section')">
+          <i class="fas fa-chart-pie"></i>
+          <span>My Progress</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer" style="padding-top: 1rem; border-top: 1px solid var(--border-color); font-size: 0.8rem; color: var(--text-muted); text-align: center;">
+        <span>B.Tech IT Mini Project</span>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <!-- Top Navigation Bar -->
+      <header class="top-navbar">
+        <div style="display: flex; align-items: center; gap: 0.8rem;">
+          <button class="btn-icon mobile-menu-btn" style="display:none;" onclick="toggleSidebar()" aria-label="Toggle Menu">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="topic-search-input" placeholder="Search algorithms, data structures..." onkeyup="handleTopicSearch(event)">
+            <div id="search-dropdown" class="search-dropdown" style="display:none;"></div>
+          </div>
+        </div>
+
+        <div class="nav-actions">
+          <span class="nav-badge" id="overall-progress-pill"><i class="fas fa-award"></i> 0% Complete</span>
+          <button class="btn-icon" id="theme-toggle-btn" onclick="toggleTheme()" title="Toggle Light/Dark Theme">
+            <i class="fas fa-moon" id="theme-toggle-icon"></i>
+          </button>
+          <div class="user-profile">
+            <i class="fas fa-circle-user" style="font-size: 1.3rem; color: var(--muted-purple);"></i>
+            <span>Guest Student</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Section A: Welcome Banner with Mascot LUMI -->
+      <section class="welcome-banner">
+        <div class="welcome-content">
+          <h1 class="welcome-heading">Welcome to <span>AlgoVision</span> ✦</h1>
+          <p class="welcome-subtitle">Understand algorithms, one step at a time. Visual, interactive and beginner-friendly for engineering students.</p>
+          <a href="/topic/bubble-sort" class="btn-primary">
+            <i class="fas fa-play"></i> Start Learning Now
+          </a>
+        </div>
+
+        <!-- LUMI the Lavender Bunny Mascot Illustration -->
+        <div class="banner-lumi lumi-floating">
+          <svg viewBox="0 0 120 140" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <g id="lumi-bunny">
+              <!-- Shadow -->
+              <ellipse cx="60" cy="132" rx="34" ry="7" fill="rgba(128,106,156,0.18)"/>
+              <!-- Body -->
+              <ellipse cx="60" cy="98" rx="28" ry="32" fill="#E4D5F2"/>
+              <ellipse cx="60" cy="100" rx="18" ry="20" fill="#FFF8ED" opacity="0.8"/>
+              <!-- Paws -->
+              <ellipse cx="44" cy="126" rx="9" ry="6" fill="#D6C2E8"/>
+              <ellipse cx="76" cy="126" rx="9" ry="6" fill="#D6C2E8"/>
+              <!-- Hands -->
+              <ellipse cx="42" cy="96" rx="7" ry="5" fill="#D6C2E8"/>
+              <ellipse cx="78" cy="96" rx="7" ry="5" fill="#D6C2E8"/>
+              <!-- Ears -->
+              <ellipse cx="46" cy="40" rx="8" ry="22" fill="#E4D5F2" transform="rotate(-12 46 40)"/>
+              <ellipse cx="46" cy="42" rx="5" ry="16" fill="#F8E2EA" transform="rotate(-12 46 42)"/>
+              <ellipse cx="74" cy="40" rx="8" ry="22" fill="#E4D5F2" transform="rotate(12 74 40)"/>
+              <ellipse cx="74" cy="42" rx="5" ry="16" fill="#F8E2EA" transform="rotate(12 74 42)"/>
+              <!-- Head -->
+              <circle cx="60" cy="68" r="26" fill="#E4D5F2"/>
+              <!-- Cheeks -->
+              <circle cx="48" cy="74" r="5" fill="#F8D4E2" opacity="0.6"/>
+              <circle cx="72" cy="74" r="5" fill="#F8D4E2" opacity="0.6"/>
+              <!-- Eyes -->
+              <circle cx="52" cy="67" r="3.2" fill="#393442"/>
+              <circle cx="68" cy="67" r="3.2" fill="#393442"/>
+              <circle cx="53" cy="65.5" r="1.1" fill="#FFFFFF"/>
+              <circle cx="69" cy="65.5" r="1.1" fill="#FFFFFF"/>
+              <!-- Nose -->
+              <polygon points="60,71 58,69 62,69" fill="#E27D8C"/>
+              <!-- Smile -->
+              <path d="M 57 74 Q 60 77 63 74" stroke="#393442" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+            </g>
+          </svg>
+        </div>
+      </section>
+
+      <!-- Section B: Learning Categories -->
+      <section style="margin-bottom: 2.2rem;">
+        <div class="section-header">
+          <h2 class="section-title"><i class="fas fa-shapes"></i> Core Learning Categories</h2>
+        </div>
+
+        <div class="categories-grid">
+          <!-- 1. Data Structures -->
+          <div class="category-card" onclick="location.href='/topic/arrays'">
+            <div>
+              <div class="category-icon-wrap">
+                <i class="fas fa-layer-group"></i>
+              </div>
+              <h3 class="category-name">Data Structures</h3>
+              <p class="category-desc">Arrays, Singly Linked Lists, Stacks, and Linear Queues with step-by-step memory visualization.</p>
+            </div>
+            <div class="category-footer">
+              <span class="topic-count">4 Topics</span>
+              <span class="explore-link">Explore <i class="fas fa-arrow-right"></i></span>
+            </div>
+          </div>
+
+          <!-- 2. Sorting Algorithms -->
+          <div class="category-card" onclick="location.href='/topic/bubble-sort'">
+            <div>
+              <div class="category-icon-wrap">
+                <i class="fas fa-arrow-down-short-wide"></i>
+              </div>
+              <h3 class="category-name">Sorting Algorithms</h3>
+              <p class="category-desc">Bubble Sort, Selection Sort, Insertion Sort, Merge Sort, and Quick Sort animations.</p>
+            </div>
+            <div class="category-footer">
+              <span class="topic-count">5 Topics</span>
+              <span class="explore-link">Explore <i class="fas fa-arrow-right"></i></span>
+            </div>
+          </div>
+
+          <!-- 3. Searching Algorithms -->
+          <div class="category-card" onclick="location.href='/topic/linear-search'">
+            <div>
+              <div class="category-icon-wrap">
+                <i class="fas fa-magnifying-glass"></i>
+              </div>
+              <h3 class="category-name">Searching Algorithms</h3>
+              <p class="category-desc">Linear Search and Binary Search with pointer movements and search-range eliminations.</p>
+            </div>
+            <div class="category-footer">
+              <span class="topic-count">2 Topics</span>
+              <span class="explore-link">Explore <i class="fas fa-arrow-right"></i></span>
+            </div>
+          </div>
+
+          <!-- 4. Algorithm Complexity -->
+          <div class="category-card" onclick="location.href='/topic/bubble-sort#theory-section'">
+            <div>
+              <div class="category-icon-wrap">
+                <i class="fas fa-clock-rotate-left"></i>
+              </div>
+              <h3 class="category-name">Time & Space Complexity</h3>
+              <p class="category-desc">Big-O notation, Best, Average, and Worst-case analysis for all common semester exam algorithms.</p>
+            </div>
+            <div class="category-footer">
+              <span class="topic-count">Exam Ready</span>
+              <span class="explore-link">Explore <i class="fas fa-arrow-right"></i></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section C: Popular Exam Topics -->
+      <section style="margin-bottom: 2.2rem;">
+        <div class="section-header">
+          <h2 class="section-title"><i class="fas fa-star"></i> High-Weightage B.Tech Exam Topics</h2>
+        </div>
+
+        <div class="topics-grid">
+          <!-- 1. Arrays -->
+          <div class="topic-card" onclick="location.href='/topic/arrays'">
+            <div class="topic-card-header">
+              <span class="badge-category">Data Structure</span>
+              <span class="badge-difficulty badge-easy">Easy</span>
+            </div>
+            <h3 class="topic-title">Arrays</h3>
+            <p class="topic-desc">Contiguous memory allocation, O(1) random access, shifting on insert/delete operations.</p>
+            <div class="topic-card-footer">
+              <span style="font-size: 0.8rem; color: var(--text-muted);"><i class="fas fa-clock"></i> 10 mins</span>
+              <span class="explore-link">Learn <i class="fas fa-chevron-right"></i></span>
+            </div>
+          </div>
+
+          <!-- 2. Linked List -->
+          <div class="topic-card" onclick="location.href='/topic/linked-list'">
+            <div class="topic-card-header">
+              <span class="badge-category">Data Structure</span>
+              <span class="badge-difficulty badge-medium">Medium</span>
+            </div>
+            <h3 class="topic-title">Singly Linked List</h3>
+            <p class="topic-desc">Dynamic linear data structure with nodes containing data and pointer to next node.</p>
+            <div class="topic-card-footer">
+              <span style="font-size: 0.8rem; color: var(--text-muted);"><i class="fas fa-clock"></i> 15 mins</span>
+              <span class="explore-link">Learn <i class="fas fa-chevron-right"></i></span>
+            </div>
+          </div>
+
+          <!-- 3. Stack -->
+          <div class="topic-card" onclick="location.href='/topic/stack'">
+            <div class="topic-card-header">
+              <span class="badge-category">Data Structure</span>
+              <span class="badge-difficulty badge-easy">Easy</span>
+            </div>
+            <h3 class="topic-title">Stack (LIFO)</h3>
+            <p class="topic-desc">Last-In-First-Out mechanism with Push, Pop, and Peek operations plus overflow/underflow checks.</p>
+            <div class="topic-card-footer">
+              <span style="font-size: 0.8rem; color: var(--text-muted);"><i class="fas fa-clock"></i> 10 mins</span>
+              <span class="explore-link">Learn <i class="fas fa-chevron-right"></i></span>
+            </div>
+          </div>
+
+          <!-- 4. Queue -->
+          <div class="topic-card" onclick="location.href='/topic/queue'">
+            <div class="topic-card-header">
+              <span class="badge-category">Data Structure</span>
+              <span class="badge-difficulty badge-easy">Easy</span>
+            </div>
+            <h3 class="topic-title">Queue (FIFO)</h3>
+            <p class="topic-desc">First-In-First-Out linear structure with Front and Rear pointers for Enqueue and Dequeue.</p>
+            <div class="topic-card-footer">
+              <span style="font-size: 0.8rem; color: var(--text-muted);"><i class="fas fa-clock"></i> 10 mins</span>
+              <span class="explore-link">Learn <i class="fas fa-chevron-right"></i></span>
+            </div>
+          </div>
+
+          <!-- 5. Bubble Sort -->
+          <div class="topic-card" onclick="location.href='/topic/bubble-sort'">
+            <div class="topic-card-header">
+              <span class="badge-category">Sorting</span>
+              <span class="badge-difficulty badge-easy">Easy</span>
+            </div>
+            <h3 class="topic-title">Bubble Sort</h3>
+            <p class="topic-desc">Repeatedly compares adjacent elements and swaps them until the largest element bubbles up.</p>
+            <div class="topic-card-footer">
+              <span style="font-size: 0.8rem; color: var(--text-muted);"><i class="fas fa-clock"></i> 12 mins</span>
+              <span class="explore-link">Learn <i class="fas fa-chevron-right"></i></span>
+            </div>
+          </div>
+
+          <!-- 6. Binary Search -->
+          <div class="topic-card" onclick="location.href='/topic/binary-search'">
+            <div class="topic-card-header">
+              <span class="badge-category">Searching</span>
+              <span class="badge-difficulty badge-easy">Easy</span>
+            </div>
+            <h3 class="topic-title">Binary Search</h3>
+            <p class="topic-desc">Logarithmic search on sorted arrays by repeatedly halving the search interval (Low, Mid, High).</p>
+            <div class="topic-card-footer">
+              <span style="font-size: 0.8rem; color: var(--text-muted);"><i class="fas fa-clock"></i> 12 mins</span>
+              <span class="explore-link">Learn <i class="fas fa-chevron-right"></i></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section D & F: Continue Learning & Daily Motivation -->
+      <section class="bottom-dashboard-grid">
+        <!-- Continue Learning (real localStorage data) -->
+        <div class="continue-card">
+          <div class="section-header" style="margin-bottom: 0.8rem;">
+            <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text-main);"><i class="fas fa-history" style="color: var(--muted-purple);"></i> Continue Learning</h3>
+          </div>
+          <div id="continue-learning-list" class="recent-list">
+            <p style="font-size: 0.88rem; color: var(--text-muted); padding: 0.8rem 0;">No recently viewed topics yet. Click any topic above to start exploring!</p>
+          </div>
+        </div>
+
+        <!-- Daily Motivation -->
+        <div class="motivation-card">
+          <div class="section-header" style="margin-bottom: 0.8rem;">
+            <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text-main);"><i class="fas fa-seedling" style="color: #6DBF9E;"></i> Daily Study Motivation</h3>
+          </div>
+          <blockquote class="motivation-quote" id="daily-quote">
+            "First, solve the problem. Then, write the code."
+          </blockquote>
+          <div class="motivation-author" id="daily-author">— John Johnson</div>
+        </div>
+      </section>
+
+      <!-- Section E: My Learning Progress (Real LocalStorage) -->
+      <section id="progress-section" style="margin-bottom: 2.2rem;">
+        <div class="section-header">
+          <h2 class="section-title"><i class="fas fa-chart-line"></i> My Learning Progress</h2>
+          <button class="btn-secondary" style="padding: 0.4rem 0.9rem; font-size: 0.82rem;" onclick="resetProgress()">
+            <i class="fas fa-rotate-left"></i> Reset
+          </button>
+        </div>
+
+        <div class="progress-grid">
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-book-open"></i></div>
+            <div class="stat-info">
+              <div class="stat-value" id="stat-explored-count">0</div>
+              <div class="stat-label">Topics Explored</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon" style="background-color: #E2F5EC; color: #2D8A61;"><i class="fas fa-check-double"></i></div>
+            <div class="stat-info">
+              <div class="stat-value" id="stat-completed-count">0</div>
+              <div class="stat-label">Topics Completed</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon" style="background-color: var(--blush-pink); color: #D66D85;"><i class="fas fa-folder-open"></i></div>
+            <div class="stat-info">
+              <div class="stat-value" id="stat-categories-count">0 / 3</div>
+              <div class="stat-label">Categories Visited</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon" style="background-color: var(--warm-cream); color: #C2843A;"><i class="fas fa-percent"></i></div>
+            <div class="stat-info">
+              <div class="stat-value" id="stat-overall-percent">0%</div>
+              <div class="stat-label">Total Completion</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/js/progress.js"></script>
+  <script src="/js/dashboard.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+/* ===================================================
+   ALGOVISION - RESPONSIVE STYLESHEET
+   =================================================== */
+
+@media (max-width: 992px) {
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.25);
+  }
+
+  .sidebar.mobile-open {
+    transform: translateX(0);
+  }
+
+  .main-content {
+    margin-left: 0;
+    max-width: 100vw;
+    padding: 1.25rem 1.25rem;
+  }
+
+  .mobile-menu-btn {
+    display: flex !important;
+  }
+
+  .welcome-content {
+    max-width: 80%;
+  }
+
+  .banner-lumi {
+    right: 1rem;
+    width: 110px;
+    height: 130px;
+    opacity: 0.8;
+  }
+
+  .bottom-dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .top-navbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.8rem;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+
+  .nav-actions {
+    justify-content: space-between;
+  }
+
+  .welcome-banner {
+    padding: 1.8rem 1.4rem;
+  }
+
+  .welcome-heading {
+    font-size: 1.6rem;
+  }
+
+  .welcome-content {
+    max-width: 100%;
+  }
+
+  .banner-lumi {
+    display: none;
+  }
+
+  .bars-canvas {
+    gap: 6px;
+    height: 210px;
+  }
+
+  .viz-bar {
+    width: 32px;
+    font-size: 0.78rem;
+  }
+
+  .viz-cell {
+    width: 48px;
+    height: 48px;
+    font-size: 1rem;
+  }
+
+  .input-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .array-input, .target-input, .ds-input {
+    width: 100% !important;
+  }
+
+  .playback-row {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .categories-grid, .topics-grid, .progress-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .topic-page-title {
+    font-size: 1.5rem;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

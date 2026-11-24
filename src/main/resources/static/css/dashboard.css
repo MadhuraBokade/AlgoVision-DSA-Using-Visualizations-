@@ -1,0 +1,326 @@
+/* ===================================================
+   ALGOVISION - DASHBOARD STYLESHEET
+   =================================================== */
+
+/* Welcome Banner */
+.welcome-banner {
+  background: linear-gradient(135deg, var(--light-lavender) 0%, var(--blush-pink) 100%);
+  border-radius: 24px;
+  padding: 2.2rem 2.8rem;
+  margin-bottom: 2.2rem;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 6px 24px rgba(128, 106, 156, 0.1);
+}
+
+.welcome-content {
+  max-width: 60%;
+  position: relative;
+  z-index: 2;
+}
+
+.welcome-heading {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.5px;
+}
+
+.welcome-heading span {
+  color: var(--muted-purple);
+}
+
+.welcome-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  margin-bottom: 1.4rem;
+}
+
+.banner-lumi {
+  position: absolute;
+  right: 2.5rem;
+  bottom: 0.5rem;
+  width: 140px;
+  height: 160px;
+  z-index: 1;
+}
+
+/* Section Titles */
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.section-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.section-title i {
+  color: var(--muted-purple);
+  font-size: 1.15rem;
+}
+
+/* Category Grid */
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.4rem;
+  margin-bottom: 2.2rem;
+}
+
+.category-card {
+  background-color: var(--card-bg);
+  border-radius: 20px;
+  padding: 1.6rem;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.category-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--hover-shadow);
+  border-color: var(--muted-purple);
+}
+
+.category-icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background-color: var(--primary-lavender);
+  color: var(--muted-purple);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  margin-bottom: 1.1rem;
+}
+
+.category-card:nth-child(2) .category-icon-wrap {
+  background-color: var(--blush-pink);
+  color: #D66D85;
+}
+
+.category-card:nth-child(3) .category-icon-wrap {
+  background-color: #E2F5EC;
+  color: #2D8A61;
+}
+
+.category-card:nth-child(4) .category-icon-wrap {
+  background-color: var(--warm-cream);
+  color: #C2843A;
+}
+
+.category-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 0.4rem;
+}
+
+.category-desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-bottom: 1.2rem;
+  line-height: 1.4;
+}
+
+.category-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--border-color);
+  padding-top: 0.8rem;
+}
+
+.topic-count {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.explore-link {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--muted-purple);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/* Popular Topics Grid */
+.topics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2.2rem;
+}
+
+.topic-card {
+  background-color: var(--card-bg);
+  border-radius: 18px;
+  padding: 1.4rem;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--card-shadow);
+  transition: all 0.25s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.topic-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--hover-shadow);
+  border-color: var(--muted-purple);
+}
+
+.topic-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.topic-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 0.35rem;
+}
+
+.topic-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 1.2rem;
+  flex-grow: 1;
+}
+
+.topic-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Learning Progress Section */
+.progress-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2.2rem;
+}
+
+.stat-card {
+  background-color: var(--card-bg);
+  border-radius: 18px;
+  padding: 1.4rem;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--card-shadow);
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background-color: var(--primary-lavender);
+  color: var(--muted-purple);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+}
+
+.stat-info .stat-value {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-main);
+  line-height: 1.1;
+}
+
+.stat-info .stat-label {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* Daily Motivation & Continue Learning Row */
+.bottom-dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.4rem;
+  margin-bottom: 2rem;
+}
+
+.continue-card, .motivation-card {
+  background-color: var(--card-bg);
+  border-radius: 20px;
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--card-shadow);
+}
+
+.motivation-card {
+  background: linear-gradient(135deg, var(--card-bg) 60%, var(--warm-cream) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.motivation-quote {
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--text-main);
+  line-height: 1.5;
+  margin-bottom: 0.8rem;
+  padding-left: 0.8rem;
+  border-left: 3px solid var(--muted-purple);
+}
+
+.motivation-author {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-align: right;
+}
+
+.recent-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.recent-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 0.8rem;
+  border-radius: 10px;
+  background-color: var(--light-lavender);
+  text-decoration: none;
+  color: var(--text-main);
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.recent-item:hover {
+  background-color: var(--primary-lavender);
+  transform: translateX(3px);
+}

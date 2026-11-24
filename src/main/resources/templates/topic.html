@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Topic Visualization – AlgoVision</title>
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/visualization.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Left Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <i class="fas fa-sparkles logo-icon"></i>
+        <span class="logo-text">AlgoVision</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="/" class="nav-item">
+          <i class="fas fa-home"></i>
+          <span>Dashboard</span>
+        </a>
+        <a href="/topic/arrays" class="nav-item" id="nav-arrays">
+          <i class="fas fa-table-cells"></i>
+          <span>Arrays</span>
+        </a>
+        <a href="/topic/linked-list" class="nav-item" id="nav-linked-list">
+          <i class="fas fa-link"></i>
+          <span>Linked List</span>
+        </a>
+        <a href="/topic/stack" class="nav-item" id="nav-stack">
+          <i class="fas fa-layer-group"></i>
+          <span>Stack</span>
+        </a>
+        <a href="/topic/queue" class="nav-item" id="nav-queue">
+          <i class="fas fa-ellipsis"></i>
+          <span>Queue</span>
+        </a>
+        <a href="/topic/bubble-sort" class="nav-item" id="nav-bubble-sort">
+          <i class="fas fa-arrow-down-short-wide"></i>
+          <span>Bubble Sort</span>
+        </a>
+        <a href="/topic/selection-sort" class="nav-item" id="nav-selection-sort">
+          <i class="fas fa-arrow-down-wide-short"></i>
+          <span>Selection Sort</span>
+        </a>
+        <a href="/topic/insertion-sort" class="nav-item" id="nav-insertion-sort">
+          <i class="fas fa-arrow-down-1-9"></i>
+          <span>Insertion Sort</span>
+        </a>
+        <a href="/topic/merge-sort" class="nav-item" id="nav-merge-sort">
+          <i class="fas fa-code-merge"></i>
+          <span>Merge Sort</span>
+        </a>
+        <a href="/topic/quick-sort" class="nav-item" id="nav-quick-sort">
+          <i class="fas fa-bolt"></i>
+          <span>Quick Sort</span>
+        </a>
+        <a href="/topic/linear-search" class="nav-item" id="nav-linear-search">
+          <i class="fas fa-magnifying-glass"></i>
+          <span>Linear Search</span>
+        </a>
+        <a href="/topic/binary-search" class="nav-item" id="nav-binary-search">
+          <i class="fas fa-crosshairs"></i>
+          <span>Binary Search</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="/" style="color: var(--muted-purple); text-decoration: none; font-weight: 600;"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <!-- Top Bar -->
+      <header class="top-navbar">
+        <div style="display: flex; align-items: center; gap: 0.8rem;">
+          <button class="btn-icon mobile-menu-btn" style="display:none;" onclick="toggleSidebar()" aria-label="Toggle Menu">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="breadcrumb-nav">
+            <a href="/"><i class="fas fa-house"></i> Home</a>
+            <span class="breadcrumb-sep">/</span>
+            <span id="breadcrumb-category">Category</span>
+            <span class="breadcrumb-sep">/</span>
+            <span id="breadcrumb-title" style="color: var(--text-main); font-weight: 600;">Topic</span>
+          </div>
+        </div>
+
+        <div class="nav-actions">
+          <button class="btn-icon" id="theme-toggle-btn" onclick="toggleTheme()" title="Toggle Light/Dark Theme">
+            <i class="fas fa-moon" id="theme-toggle-icon"></i>
+          </button>
+          <div class="user-profile">
+            <i class="fas fa-circle-user" style="font-size: 1.3rem; color: var(--muted-purple);"></i>
+            <span>Guest</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- SECTION 1: TOPIC HEADER -->
+      <section class="topic-header-section">
+        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
+          <a href="/" class="btn-secondary" style="padding: 0.35rem 0.8rem; font-size: 0.82rem;">
+            <i class="fas fa-arrow-left"></i> Back
+          </a>
+          <span class="badge-category" id="topic-category-badge">Category</span>
+          <span class="badge-difficulty badge-easy" id="topic-difficulty-badge">Beginner</span>
+        </div>
+        <div class="topic-title-row">
+          <h1 class="topic-page-title" id="topic-display-title">Algorithm Title</h1>
+        </div>
+        <p class="topic-intro-text" id="topic-display-intro">Topic description and overview.</p>
+      </section>
+
+      <!-- SECTION 2: INTERACTIVE VISUALIZATION -->
+      <section class="visualization-container">
+        <div class="viz-top-bar">
+          <div class="viz-title">
+            <i class="fas fa-chart-simple" style="color: var(--muted-purple);"></i>
+            <span>Interactive Visualizer</span>
+          </div>
+          <div class="step-indicator-badge" id="step-indicator">Step 0 of 0</div>
+        </div>
+
+        <!-- Controls: Input Row -->
+        <div class="controls-bar">
+          <div class="input-row" id="common-input-row">
+            <input type="text" id="custom-array-input" class="input-field array-input" placeholder="e.g. 7, 3, 9, 2, 8, 4, 1">
+            <input type="number" id="target-input" class="input-field target-input" placeholder="Target" style="display: none;">
+            <button class="btn-primary" onclick="startVisualization()">
+              <i class="fas fa-play"></i> Run Algorithm
+            </button>
+            <button class="btn-secondary" onclick="generateRandomData()">
+              <i class="fas fa-dice"></i> Random
+            </button>
+          </div>
+
+          <!-- Extra Input Row for Data Structure operations -->
+          <div class="input-row" id="ds-operations-row" style="display: none;">
+            <input type="number" id="ds-value-input" class="input-field ds-input" placeholder="Value (e.g. 42)">
+            <input type="number" id="ds-pos-input" class="input-field ds-input" placeholder="Index / Pos" style="display: none;">
+            <div id="ds-button-group" style="display: flex; gap: 0.5rem; flex-wrap: wrap;"></div>
+          </div>
+
+          <!-- Playback Controls Row -->
+          <div class="playback-row">
+            <div class="playback-buttons">
+              <button class="ctrl-btn" onclick="restartVisualization()" title="Restart (Step 0)">
+                <i class="fas fa-backward-step"></i>
+              </button>
+              <button class="ctrl-btn" onclick="prevStep()" title="Previous Step">
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <button class="ctrl-btn btn-play-pause" id="play-pause-btn" onclick="togglePlay()" title="Play / Pause">
+                <i class="fas fa-play" id="play-pause-icon"></i>
+              </button>
+              <button class="ctrl-btn" onclick="nextStep()" title="Next Step">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+            </div>
+
+            <div class="speed-control-wrap">
+              <label for="speed-select"><i class="fas fa-gauge"></i> Speed:</label>
+              <select id="speed-select" class="speed-select" onchange="changeSpeed()">
+                <option value="1800">0.5x (Slow)</option>
+                <option value="900" selected>1.0x (Normal)</option>
+                <option value="450">2.0x (Fast)</option>
+                <option value="150">4.0x (Very Fast)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Visualization Workspace -->
+        <div class="viz-workspace" id="visualization-workspace">
+          <div id="canvas-container" style="width: 100%; display: flex; justify-content: center; align-items: center;">
+            <!-- Rendered dynamically by visualization.js -->
+          </div>
+        </div>
+
+        <!-- Progress Fill Bar -->
+        <div class="viz-progress-container">
+          <div class="viz-progress-fill" id="viz-progress-fill"></div>
+        </div>
+
+        <!-- Dynamic Operation Badge & Explanation -->
+        <div class="operation-box">
+          <span class="op-badge" id="operation-badge">READY</span>
+          <span class="op-explanation" id="operation-explanation">Click 'Run Algorithm' to start the visualization.</span>
+        </div>
+
+        <!-- Color Legend -->
+        <div class="color-legend">
+          <div class="legend-item">
+            <span class="legend-dot dot-compare"></span>
+            <span>Comparing / Checking</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot dot-swap"></span>
+            <span>Swapping / Shifting</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot dot-sorted"></span>
+            <span>Sorted / Target Found</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot dot-active"></span>
+            <span>Active Pointer</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Mark as Completed Bar -->
+      <section class="mark-complete-bar">
+        <div>
+          <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.2rem;">Track Your Progress</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Finished studying this topic? Mark it completed to update your learning statistics.</p>
+        </div>
+        <button class="btn-complete" id="mark-complete-btn" onclick="toggleTopicCompletion()">
+          <i class="fas fa-circle-check"></i>
+          <span id="complete-btn-text">Mark as Completed</span>
+        </button>
+      </section>
+
+      <!-- SECTION 3: WRITTEN THEORY (DIRECTLY BELOW ON THE SAME PAGE) -->
+      <section class="theory-container" id="theory-section">
+        <div class="theory-header">
+          <h2><i class="fas fa-book-bookmark" style="color: var(--muted-purple);"></i> Comprehensive Theory & Analysis</h2>
+        </div>
+        
+        <div id="theory-dynamic-content">
+          <!-- Populated by topic-data.js -->
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Lumi Celebration Overlay -->
+  <div id="celebration-overlay" class="celebration-overlay" style="display: none;">
+    <div class="celebration-card">
+      <div style="width: 110px; height: 120px; margin: 0 auto;" class="lumi-celebrating">
+        <svg viewBox="0 0 120 140" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="60" cy="132" rx="34" ry="7" fill="rgba(128,106,156,0.18)"/>
+          <ellipse cx="60" cy="98" rx="28" ry="32" fill="#E4D5F2"/>
+          <ellipse cx="60" cy="100" rx="18" ry="20" fill="#FFF8ED" opacity="0.8"/>
+          <!-- Raised celebration paws -->
+          <ellipse cx="32" cy="78" rx="8" ry="6" fill="#D6C2E8" transform="rotate(-35 32 78)"/>
+          <ellipse cx="88" cy="78" rx="8" ry="6" fill="#D6C2E8" transform="rotate(35 88 78)"/>
+          <ellipse cx="44" cy="126" rx="9" ry="6" fill="#D6C2E8"/>
+          <ellipse cx="76" cy="126" rx="9" ry="6" fill="#D6C2E8"/>
+          <ellipse cx="46" cy="40" rx="8" ry="22" fill="#E4D5F2" transform="rotate(-15 46 40)"/>
+          <ellipse cx="46" cy="42" rx="5" ry="16" fill="#F8E2EA" transform="rotate(-15 46 42)"/>
+          <ellipse cx="74" cy="40" rx="8" ry="22" fill="#E4D5F2" transform="rotate(15 74 40)"/>
+          <ellipse cx="74" cy="42" rx="5" ry="16" fill="#F8E2EA" transform="rotate(15 74 42)"/>
+          <circle cx="60" cy="68" r="26" fill="#E4D5F2"/>
+          <circle cx="48" cy="74" r="5" fill="#F8D4E2" opacity="0.6"/>
+          <circle cx="72" cy="74" r="5" fill="#F8D4E2" opacity="0.6"/>
+          <!-- Happy blinking eyes -->
+          <path d="M 49 67 Q 52 63 55 67" stroke="#393442" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M 65 67 Q 68 63 71 67" stroke="#393442" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <polygon points="60,71 58,69 62,69" fill="#E27D8C"/>
+          <path d="M 55 74 Q 60 79 65 74" stroke="#393442" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h3>🎉 Fantastic Progress!</h3>
+      <p id="celebration-message">You have completed this topic! Lumi is celebrating your hard work.</p>
+      <button class="btn-primary" onclick="closeCelebration()" style="margin: 0 auto;">
+        Keep Learning <i class="fas fa-arrow-right"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/js/progress.js"></script>
+  <script src="/js/topic-data.js"></script>
+  <script src="/js/visualization.js"></script>
+  <script src="/js/animation-controller.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>
